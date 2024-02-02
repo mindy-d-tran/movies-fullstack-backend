@@ -2,7 +2,9 @@ import "./loadEnv.js"
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
+
 import moviesRouter from "./routes/movies.js";
+import userRouter from './routes/user.js';
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -15,6 +17,7 @@ app.use(express.urlencoded({ extended: true })); //allow data in url string
 
 // routes
 app.use('/api/movies', moviesRouter);
+app.use('/api/users', userRouter);
 
 app.get("/", (req, res) => {
   res.send("hewo this is the backend");
